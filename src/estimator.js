@@ -3,6 +3,7 @@ import infectionsByRequestedTime from './utility_functions/infectionsByRequested
 import severeCasesByRequestedTime from './utility_functions/severeCasesByRequestedTime';
 import availableBedsForSevereCases from './utility_functions/hospitalBedsByRequestedTime';
 import casesForICUByRequestedTime from './utility_functions/casesForICUByRequestedTime';
+import casesForVentsByRequestedTime from './utility_functions/casesForVentilatorsByRequestedTime';
 //
 //
 const covid19ImpactEstimator = (data) => {
@@ -49,6 +50,11 @@ const covid19ImpactEstimator = (data) => {
   const severeICUCases = casesForICUByRequestedTime(severeInfectionsByReqTime);
   //
   //
+  // 6. computing cases needing ventilators
+  const ventsCases = casesForVentsByRequestedTime(infectionsByReqTime);
+  const severeVentsCases = casesForVentsByRequestedTime(severeInfectionsByReqTime);
+  //
+  //
   return {
     data: input,
     impact: {
@@ -57,7 +63,7 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: sevCasesByReqTime,
       hospitalBedsByRequestedTime: availableBeds,
       casesForICUByRequestedTime: icuCases,
-      casesForVentilatorsByRequestedTime: 0,
+      casesForVentilatorsByRequestedTime: ventsCases,
       dollarsInFlight: 0
     },
     severeImpact: {
@@ -66,7 +72,7 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: sevSevCasesByReqTime,
       hospitalBedsByRequestedTime: availableBedsForSevere,
       casesForICUByRequestedTime: severeICUCases,
-      casesForVentilatorsByRequestedTime: 0,
+      casesForVentilatorsByRequestedTime: severeVentsCases,
       dollarsInFlight: 0
     }
   };
