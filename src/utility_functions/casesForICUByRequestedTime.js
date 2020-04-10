@@ -1,5 +1,5 @@
 const casesForICUByRequestedTime = (infectionsByRequestedTime) => {
   const casesForICU = infectionsByRequestedTime * (5 / 100);
-  return parseInt(casesForICU, 10);
+  return Math.trunc(casesForICU);
 };
 export default casesForICUByRequestedTime;
