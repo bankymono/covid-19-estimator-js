@@ -1,6 +1,7 @@
 import currentlyInfected from './utility_functions/currentlyInfected';
 import infectionsByRequestedTime from './utility_functions/infectionsByRequestedTime';
 import severeCasesByRequestedTime from './utility_functions/severeCasesByRequestedTime';
+import availableBedsForSevereCases from './utility_functions/hospitalBedsByRequestedTime';
 //
 //
 const covid19ImpactEstimator = (data) => {
@@ -31,13 +32,19 @@ const covid19ImpactEstimator = (data) => {
   const sevSevCasesByReqTime = severeCasesByRequestedTime(severeInfectionsByReqTime);
   //
   //
+  // 4. computing available beds for severe cases
+  const availableBeds = availableBedsForSevereCases(sevCasesByReqTime, input.totalHospitalBeds);
+  const availableBedsForSevere = availableBedsForSevereCases(sevSevCasesByReqTime,
+    input.totalHospitalBeds);
+  //
+  //
   return {
     data: input,
     impact: {
       currentlyInfected: currInfected,
       infectionsByRequestedTime: infectionsByReqTime,
       severeCasesByRequestedTime: sevCasesByReqTime,
-      hospitalBedsByRequestedTime: 0,
+      hospitalBedsByRequestedTime: availableBeds,
       casesForICUByRequestedTime: 0,
       casesForVentilatorsByRequestedTime: 0,
       dollarsInFlight: 0
@@ -46,7 +53,7 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: severeCurrInfected,
       infectionsByRequestedTime: severeInfectionsByReqTime,
       severeCasesByRequestedTime: sevSevCasesByReqTime,
-      hospitalBedsByRequestedTime: 0,
+      hospitalBedsByRequestedTime: availableBedsForSevere,
       casesForICUByRequestedTime: 0,
       casesForVentilatorsByRequestedTime: 0,
       dollarsInFlight: 0
