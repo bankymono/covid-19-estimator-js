@@ -1,12 +1,11 @@
 const availableBeds = (severeCases, hospitalBeds) => {
   const percent = 35 / 100;
   const bedsAvail = hospitalBeds * percent;
-  const truncBedsAvail = Math.trunc(bedsAvail);
-  const availForPatients = truncBedsAvail - severeCases;
+  const availForPatients = bedsAvail - severeCases;
   if (availForPatients < 0) {
-    return availForPatients;
+    return Math.trunc(availForPatients);
   }
-  return truncBedsAvail;
+  return bedsAvail;
   //
 };
 export default availableBeds;
