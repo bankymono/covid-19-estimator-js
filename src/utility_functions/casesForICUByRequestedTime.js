@@ -1,5 +1,6 @@
 const casesForICUByRequestedTime = (infectionsByRequestedTime) => {
-  const casesForICU = infectionsByRequestedTime * (5 / 100);
+  const percent = 5 / 100;
+  const casesForICU = infectionsByRequestedTime * percent;
   return Math.trunc(casesForICU);
 };
 export default casesForICUByRequestedTime;

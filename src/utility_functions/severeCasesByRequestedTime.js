@@ -1,5 +1,6 @@
 const severeCasesByRequestedTime = (infectionsByRequestedTime) => {
-  const severelyImpacted = infectionsByRequestedTime * (15 / 100);
+  const percent = 15 / 100;
+  const severelyImpacted = infectionsByRequestedTime * percent;
   return Math.trunc(severelyImpacted);
 };
 //

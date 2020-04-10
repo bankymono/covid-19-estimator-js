@@ -1,5 +1,6 @@
 const casesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
-  const casesForVents = infectionsByRequestedTime * (2 / 100);
+  const percent = 2 / 100;
+  const casesForVents = infectionsByRequestedTime * percent;
   //
   return Math.trunc(casesForVents);
 };
