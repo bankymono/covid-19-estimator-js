@@ -1,6 +1,6 @@
 const severeCasesByRequestedTime = (infectionsByRequestedTime) => {
   const severelyImpacted = infectionsByRequestedTime * (15 / 100);
-  return parseInt(severelyImpacted, 10);
+  return Math.trunc(severelyImpacted);
 };
 //
 export default severeCasesByRequestedTime;

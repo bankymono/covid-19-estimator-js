@@ -11,7 +11,7 @@ const infectionsByRequestedTime = (currentlyInfected, periodType, inputPeriod) =
     period = inputPeriod;
   }
   //
-  factor = parseInt(period / 3, 10);
+  factor = Math.trunc(period / 3);
   const result = currentlyInfected * 2 ** factor;
   //
   return result;
