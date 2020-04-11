@@ -5,7 +5,7 @@ const availableBeds = (severeCases, hospitalBeds) => {
   if (availForPatients < 0) {
     return availForPatients;
   }
-  return bedsAvail;
+  return availForPatients;
   //
 };
 export default availableBeds;
