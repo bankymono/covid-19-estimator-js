@@ -49,20 +49,20 @@ const covid19ImpactEstimator = (data) => {
   //
   //
   // 5. computing cases for ICU
-  const icuCases = casesForICUByRequestedTime(infectionsByReqTime);
-  const severeICUCases = casesForICUByRequestedTime(severeInfectionsByReqTime);
+  const icuCases = Math.trunc(casesForICUByRequestedTime(infectionsByReqTime));
+  const severeICUCases = Math.trunc(casesForICUByRequestedTime(severeInfectionsByReqTime));
   //
   //
   // 6. computing cases needing ventilators
-  const ventsCases = casesForVentsByRequestedTime(infectionsByReqTime);
-  const severeVentsCases = casesForVentsByRequestedTime(severeInfectionsByReqTime);
+  const ventsCases = Math.trunc(casesForVentsByRequestedTime(infectionsByReqTime));
+  const severeVentsCases = Math.trunc(casesForVentsByRequestedTime(severeInfectionsByReqTime));
   //
   //
   // 7. computing dollars in flight
-  const dollarsLost = dollarsInFlgt(infectionsByReqTime,
-    input.region.avgDailyIncomeInUSD, input.region.avgDailyIncomePopulation);
-  const severeDollarsLost = dollarsInFlgt(severeInfectionsByReqTime,
-    input.region.avgDailyIncomeInUSD, input.region.avgDailyIncomePopulation);
+  const dollarsLost = Math.trunc(dollarsInFlgt(infectionsByReqTime,
+    input.region.avgDailyIncomeInUSD, input.region.avgDailyIncomePopulation));
+  const severeDollarsLost = Math.trunc(dollarsInFlgt(severeInfectionsByReqTime,
+    input.region.avgDailyIncomeInUSD, input.region.avgDailyIncomePopulation));
   //
   //
   return {
