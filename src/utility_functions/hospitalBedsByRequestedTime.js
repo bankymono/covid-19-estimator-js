@@ -1,10 +1,9 @@
 const availableBeds = (severeCases, hospitalBeds) => {
   const percent = 35 / 100;
   const bedsAvail = hospitalBeds * percent;
-  const truncBedsAvail = parseInt(bedsAvail, 10);
-  const availForPatients = truncBedsAvail - severeCases;
+  const availForPatients = bedsAvail - severeCases;
   if (availForPatients < 0) {
-    return Math.trunc(availForPatients);
+    return availForPatients;
   }
   return bedsAvail;
   //

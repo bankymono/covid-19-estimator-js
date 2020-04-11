@@ -31,14 +31,15 @@ const covid19ImpactEstimator = (data) => {
   // #                     CHALLENGE 2                                  #
   // ####################################################################
   // 3. computing severe cases by requested time
-  const sevCasesByReqTime = severeCasesByRequestedTime(infectionsByReqTime);
-  const sevSevCasesByReqTime = severeCasesByRequestedTime(severeInfectionsByReqTime);
+  const sevCasesByReqTime = Math.trunc(severeCasesByRequestedTime(infectionsByReqTime));
+  const sevSevCasesByReqTime = Math.trunc(severeCasesByRequestedTime(severeInfectionsByReqTime));
   //
   //
   // 4. computing available beds for severe cases
-  const availableBeds = availableBedsForSevereCases(sevCasesByReqTime, input.totalHospitalBeds);
-  const availableBedsForSevere = availableBedsForSevereCases(sevSevCasesByReqTime,
-    input.totalHospitalBeds);
+  const availableBeds = Math.trunc(availableBedsForSevereCases(sevCasesByReqTime,
+    input.totalHospitalBeds));
+  const availableBedsForSevere = Math.trunc(availableBedsForSevereCases(sevSevCasesByReqTime,
+    input.totalHospitalBeds));
   //
   //
   // ##################################################################
