@@ -60,9 +60,11 @@ const covid19ImpactEstimator = (data) => {
   //
   // 7. computing dollars in flight
   const dollarsLost = Math.trunc(dollarsInFlgt(infectionsByReqTime,
-    input.region.avgDailyIncomeInUSD, input.region.avgDailyIncomePopulation));
+    input.region.avgDailyIncomeInUSD,
+    input.region.avgDailyIncomePopulation, input.periodType, input.timeToElapse));
   const severeDollarsLost = Math.trunc(dollarsInFlgt(severeInfectionsByReqTime,
-    input.region.avgDailyIncomeInUSD, input.region.avgDailyIncomePopulation));
+    input.region.avgDailyIncomeInUSD, input.region.avgDailyIncomePopulation,
+    input.periodType, input.timeToElapse));
   //
   //
   return {
